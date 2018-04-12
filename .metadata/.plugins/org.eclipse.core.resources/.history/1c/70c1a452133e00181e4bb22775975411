@@ -1,0 +1,16 @@
+namespace configit{
+	
+	category subjectCat {
+	
+	}
+	
+attribute subjectId {
+   id = "urn:oasis:names:tc:xacml:1.0:subject:subject-id" 
+   type = string
+   category = subjectCat
+}
+
+	policyset quote {
+		
+	}
+}

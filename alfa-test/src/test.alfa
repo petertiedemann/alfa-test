@@ -1,0 +1,42 @@
+namespace configit{
+	import attributes.*
+	namespace attributes {
+		namespace user {
+			attribute salesArea {
+				category = subjectCat
+				id="salesArea"
+				type= string
+			}	
+		}
+		namespace action {
+			attribute actionId {
+				category = actionCat
+				id="actionId"
+				type = string
+			}
+		}
+		namespace resource {
+			attribute rType{
+				category = resourceCat
+				id = "resource-type"
+				type = string
+			}
+			attribute salesArea {
+				category = resourceCat
+				id = "salesArea"
+				type = string
+			}
+		}
+	}	
+	
+	rule useProduct{
+		target clause resource.rType == "product"
+		condition user.salesArea == resource.salesArea
+		permit
+	}
+	
+	policy main{
+		apply denyUnlessPermit
+		useProduct
+	}
+}
